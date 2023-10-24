@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calcolatore Stotecoin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+        body {
+            background-image: url('https://gcdnb.pbrd.co/images/81bqx9WqQ9eJ.jpg?o=1');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center top 150px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1, p {
+            margin: 10px;
+            text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+        }
+        input, select, button {
+            width: 80%;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calcolatore Stotecoin</h1>
+    <p>Inserisci l'importo da puntare in Stotecoin:</p>
+    <input type="text" id="stakeAmount" placeholder="Inserisci l'importo">
+    <p>Scegli una quotazione:</p>
+    <select id="betOption">
+        <option value="1">Vince la squadra in casa</option>
+        <option value="0">Pareggio</option>
+        <option value="2">Vince quella fuori casa</option>
+    </select>
+    <p>Inserisci la quotazione:</p>
+    <input type="text" id="odds" placeholder="Inserisci la quotazione">
+    <button onclick="calculateResult()">Calcola</button>
+    <p>Risultato: <span id="result"></span> Stotecoin</p>
+    <script>
+        function calculateResult() {
+            var stakeAmount = parseFloat(document.getElementById("stakeAmount").value);
+            var betOption = parseInt(document.getElementById("betOption").value);
+            var odds = parseFloat(document.getElementById("odds").value);
+            var result = 0;
+
+            switch (betOption) {
+                case 1:
+                case 2:
+                case 0:
+                    result = (odds * stakeAmount) - stakeAmount;
+                    break;
+                default:
+                    alert("Scelta non valida. Per favore, inserisci un numero tra 1, 2 e 0.");
+                    return;
+            }
+            document.getElementById("result").textContent = result;
+        }
+    </script>
+</body>
+</html>
