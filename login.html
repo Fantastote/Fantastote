@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Accesso con Username</title>
+</head>
+<body>
+    <h1>Accesso con Username</h1>
+    
+    <!-- Modulo di Accesso -->
+    <form id="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <button type="submit">Accedi</button>
+    </form>
+
+    <!-- Messaggio di Errore -->
+    <p id="error-message" style="color: red; display: none;">Username non autorizzato.</p>
+
+    <script>
+        // Lista di username autorizzati
+        var utentiAutorizzati = ["utente1", "utente2", "utente3"];
+
+        // Gestione dell'accesso
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var username = document.getElementById('username').value;
+            var errorMessage = document.getElementById('error-message');
+
+            if (utentiAutorizzati.includes(username)) {
+                // Username autorizzato - Puoi reindirizzare l'utente o fornire accesso alle funzionalità.
+                window.location.href = 'pagina-protetta.html';
+            } else {
+                // Username non autorizzato - Mostra un messaggio di errore.
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
